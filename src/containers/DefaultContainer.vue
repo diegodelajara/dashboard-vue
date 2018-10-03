@@ -8,31 +8,22 @@
       </b-link>
       <SidebarToggler class="d-md-down-none" display="lg" />
       <b-navbar-nav class="d-md-down-none">
-        <b-nav-item class="px-3" to="/dashboard">Dashboard</b-nav-item>
-        <b-nav-item class="px-3" to="/users" exact>Users</b-nav-item>
-        <b-nav-item class="px-3">Settings</b-nav-item>
+        <!--b-nav-item class="px-3">Ajustes</b-nav-item-->
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
         <b-nav-item class="d-md-down-none">
           <i class="icon-bell"></i>
           <b-badge pill variant="danger">5</b-badge>
         </b-nav-item>
-        <b-nav-item class="d-md-down-none">
-          <i class="icon-list"></i>
-        </b-nav-item>
-        <b-nav-item class="d-md-down-none">
-          <i class="icon-location-pin"></i>
-        </b-nav-item>
         <DefaultHeaderDropdownAccnt/>
       </b-navbar-nav>
-      <AsideToggler class="d-none d-lg-block" />
-      <!--<AsideToggler class="d-lg-none" mobile />-->
     </AppHeader>
     <div class="app-body">
       <AppSidebar fixed>
         <SidebarHeader/>
         <SidebarForm/>
-        <SidebarNav :navItems="nav"></SidebarNav>
+        <SidebarNav :navItems="navItems"></SidebarNav>
+        <!--SidebarNav :navItems="nav"></SidebarNav-->
         <SidebarFooter/>
         <SidebarMinimizer/>
       </AppSidebar>
@@ -42,39 +33,33 @@
           <router-view></router-view>
         </div>
       </main>
-      <AppAside fixed>
-        <!--aside-->
-        <DefaultAside/>
-      </AppAside>
     </div>
-    <TheFooter>
-      <!--footer-->
-      <div>
-        <a href="https://coreui.io">CoreUI</a>
-        <span class="ml-1">&copy; 2018 creativeLabs.</span>
-      </div>
-      <div class="ml-auto">
-        <span class="mr-1">Powered by</span>
-        <a href="https://coreui.io">CoreUI for Vue</a>
-      </div>
-    </TheFooter>
+    
   </div>
 </template>
 
 <script>
-import nav from '@/_nav'
-import { Header as AppHeader, SidebarToggler, Sidebar as AppSidebar, SidebarFooter, SidebarForm, SidebarHeader, SidebarMinimizer, SidebarNav, Aside as AppAside, AsideToggler, Footer as TheFooter, Breadcrumb } from '@coreui/vue'
+//import nav from '@/_nav'
+import {  Header as AppHeader, 
+          SidebarToggler,
+          Sidebar as AppSidebar,
+          SidebarFooter,
+          SidebarForm,
+          SidebarHeader,
+          SidebarMinimizer,
+          SidebarNav,
+          Breadcrumb
+        } from '@coreui/vue'
+
 import DefaultAside from './DefaultAside'
+
 import DefaultHeaderDropdownAccnt from './DefaultHeaderDropdownAccnt'
 
 export default {
   name: 'full',
   components: {
-    AsideToggler,
     AppHeader,
     AppSidebar,
-    AppAside,
-    TheFooter,
     Breadcrumb,
     DefaultAside,
     DefaultHeaderDropdownAccnt,
@@ -87,7 +72,106 @@ export default {
   },
   data () {
     return {
-      nav: nav.items
+      navItems: [
+        {
+          icon: "fa fa-table",
+          name: "Tables",
+          url: "/base/tables"
+        },{
+          // Contabilidad
+          icon: "fa fa-money",
+          name: "Contabilidad",
+          children: [
+            {
+              icon: "fa fa-dollar",
+              name: "Ingresos",
+              url: "/contabilidad-ingresos"
+            },{
+              icon: "fa fa-dollar",
+              name: "Egresos",
+              url: "/contabilidad-egresos"
+            },{
+              icon: "icon-puzzle",
+              name: "Multas",
+              url: "/contabilidad-multas"
+            },{
+              icon: "icon-puzzle",
+              name: "Condonaciones",
+              url: "/contabilidad-condonaciones"
+            }
+          ]
+        },{
+          // GGCC
+          icon: "fa fa-percent",
+          name: "Gastos Comunes",
+          url: "/gastos-comunes"
+        },{
+          // Nómina y Remuneraciones
+          icon: "fa fa-table",
+          name: "Nómina y Remuneraciones",
+          children: [{
+              icon: "fa fa-dollar",
+              name: "Nómina",
+              url: "/nomina"
+            },{
+              icon: "fa fa-dollar",
+              name: "Remuneraciones",
+              url: "/remuneraciones"
+            },{
+              icon: "icon-puzzle",
+              name: "Horas trabajadas",
+              url: "/horas-trabajadas"
+          }]
+        },{
+          // Proveedores y Mantenciones
+          icon: "fa fa-wrench",
+          name: "Proveedores y Mantenciones",
+          children: [{
+              icon: "fa fa-dollar",
+              name: "Proveedores",
+              url: "/proveedores"
+            },{
+              icon: "fa fa-dollar",
+              name: "Mantenciones",
+              url: "/mantenciones"
+            }]
+        },{
+          // Residentes y Visitas
+          icon: "fa fa-users",
+          name: "Residentes y Visitas",
+          url: "/residentes",
+          children: [{
+              icon: "fa fa-dollar",
+              name: "Residentes",
+              url: "/residentes"
+            },{
+              icon: "fa fa-dollar",
+              name: "Visitas",
+              url: "/visitas"
+            }]
+        },{
+          // Mensajes
+          icon: "fa fa-envelope-o",
+          name: "Mensajes",
+          url: "/mensajes"
+        },{
+          // Seguridad y Alertas
+          icon: "fa fa-warning",
+          name: "Seguridad y Alertas",
+          url: "/segiridad-y-alertas"
+        },{
+          // Espacios Comunes
+          icon: "fa fa-map-marker",
+          name: "Espacios Comunes",
+          url: "/widgets"
+        },{
+          // Biblioteca
+          icon: "fa fa-book",
+          name: "Biblioteca",
+          url: "/widgets"
+        }
+      ],
+      //nav: nav.items
     }
   },
   computed: {
@@ -100,3 +184,10 @@ export default {
   }
 }
 </script>
+
+<style>
+  .sidebar .nav-dropdown > .nav-dropdown-items{
+    padding-left: 18px;
+    background-color: #3a4248;
+  }
+</style>

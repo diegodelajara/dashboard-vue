@@ -34,8 +34,8 @@
         <b-badge variant="primary">{{ itemsCount }}</b-badge>
       </b-dropdown-item>
       <b-dropdown-divider />
-      <b-dropdown-item><i class="fa fa-shield" /> Lock Account</b-dropdown-item>
-      <b-dropdown-item><i class="fa fa-lock" /> Logout</b-dropdown-item>
+      <!--b-dropdown-item><i class="fa fa-shield" /> Lock Account</b-dropdown-item-->
+      <b-dropdown-item><i class="fa fa-lock" /> Salir</b-dropdown-item>
     </template>
   </AppHeaderDropdown>
 </template>
@@ -47,8 +47,8 @@ export default {
   components: {
     AppHeaderDropdown
   },
-  data: () => {
-    return { itemsCount: 42 }
+  data () {
+    return { itemsCount: 11 }
   }
 }
 </script>
