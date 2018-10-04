@@ -28,11 +28,11 @@ const shuffleArray = (array) => {
 }
 
 export default {
-  name: 'c-table',
+  name: 'ContabilidadIngresos',
   props: {
     caption: {
       type: String,
-      default: 'Table'
+      default: 'Ingresos'
     },
     hover: {
       type: Boolean,

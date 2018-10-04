@@ -2,7 +2,7 @@
   <div class="app">
     <AppHeader fixed>
       <SidebarToggler class="d-lg-none" display="md" mobile />
-      <b-link class="navbar-brand" to="#">
+      <b-link class="navbar-brand" to="/dashboard">
         <img class="navbar-brand-full" src="img/brand/logo.svg" width="89" height="25" alt="CoreUI Logo">
         <img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">
       </b-link>
@@ -74,12 +74,8 @@ export default {
     return {
       navItems: [
         {
-          icon: "fa fa-table",
-          name: "Tables",
-          url: "/base/tables"
-        },{
           // Contabilidad
-          icon: "fa fa-money",
+          icon: "fa fa-calculator",
           name: "Contabilidad",
           children: [
             {

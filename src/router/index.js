@@ -53,8 +53,13 @@ const Users = ()            => import('@/views/users/Users')
 const User = ()             => import('@/views/users/User')
 
 // ------------------------ APP ------------------------
+  
+  // Contabilidad
   const ContabilidadIngresos  = () => import('@/components/contabilidad/ContabilidadIngresos')
   const ContabilidadEgresos   = () => import('@/components/contabilidad/ContabilidadEgresos')
+
+  // Mensajes
+  const Mensajes   = () => import('@/components/mensajes/Mensajes')
 
 
 Vue.use(Router)
@@ -66,12 +71,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/dashboard',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/home',
       name: 'Home',
       component: DefaultContainer,
       children: [
         {
-          path: 'dashboard',
+          path: '/dashboard',
           name: 'Dashboard',
           component: Dashboard
         },
@@ -97,12 +106,18 @@ export default new Router({
         // Contabilidad
         {
           path: '/contabilidad-ingresos',
-          name: 'contabilidad-ingresos',
+          name: 'Contabilidad / Ingresos',
           component: ContabilidadIngresos
         },{
           path: '/contabilidad-egresos',
-          name: 'contabilidad-egresos',
+          name: 'Contabilidad / Egresos',
           component: ContabilidadEgresos
+        },
+        // Mensajes
+        {
+          path: '/mensajes',
+          name: 'Mensajes',
+          component: Mensajes
         },
         {
           path: 'base',
@@ -298,11 +313,6 @@ export default new Router({
           path: '500',
           name: 'Page500',
           component: Page500
-        },
-        {
-          path: 'login',
-          name: 'Login',
-          component: Login
         },
         {
           path: 'register',

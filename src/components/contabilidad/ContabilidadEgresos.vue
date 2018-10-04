@@ -1,6 +1,5 @@
 <template>
   <b-card :header="caption">
-    Egresos
     <b-table :hover="hover" :striped="striped" :bordered="bordered" :small="small" :fixed="fixed" responsive="sm" :items="items" :fields="fields" :current-page="currentPage" :per-page="perPage">
       <template slot="status" slot-scope="data">
         <b-badge :variant="getBadge(data.item.status)">{{data.item.status}}</b-badge>
@@ -28,11 +27,11 @@ const shuffleArray = (array) => {
 }
 
 export default {
-  name: 'c-table',
+  name: 'ContabilidadEgresos',
   props: {
     caption: {
       type: String,
-      default: 'Table'
+      default: 'Egresos'
     },
     hover: {
       type: Boolean,
